@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SearchGitHub/static/css/main.2070e196.css",
-    "main.js": "/SearchGitHub/static/js/main.d4823b0d.js",
+    "main.js": "/SearchGitHub/static/js/main.0e9c896b.js",
     "static/js/787.e8887e7c.chunk.js": "/SearchGitHub/static/js/787.e8887e7c.chunk.js",
     "static/media/no-found.png": "/SearchGitHub/static/media/no-found.d4059a742bf9cc622aa0.png",
     "static/media/logod.svg": "/SearchGitHub/static/media/logod.a0b42423b95df1b64a94d037f58423c9.svg",
@@ -17,11 +17,11 @@
     "static/media/back.svg": "/SearchGitHub/static/media/back.0fc2e3a149b6a195400154fc2d3d14bf.svg",
     "static/media/company.svg": "/SearchGitHub/static/media/company.c5fcf6f2eac83e7effbe195dc1147e0e.svg",
     "main.2070e196.css.map": "/SearchGitHub/static/css/main.2070e196.css.map",
-    "main.d4823b0d.js.map": "/SearchGitHub/static/js/main.d4823b0d.js.map",
+    "main.0e9c896b.js.map": "/SearchGitHub/static/js/main.0e9c896b.js.map",
     "787.e8887e7c.chunk.js.map": "/SearchGitHub/static/js/787.e8887e7c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2070e196.css",
-    "static/js/main.d4823b0d.js"
+    "static/js/main.0e9c896b.js"
   ]
 }
