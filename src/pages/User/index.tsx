@@ -20,14 +20,14 @@ export const User: React.FC = observer(() => {
         <Container>
             <Header/>
             {store.user.user && <UserInfo user={store.user.user} startsCount={count}/>}
-            {store.repositories.repositories ? <Repositories>
+            {store.repositories.repositories && <Repositories>
                 {store.repositories.repositories
                     .filter(filterRepositories)
                     .sort(sortRepositories)
                     .map((repository: IRepository) => (
                         <Repository key={repository.name} repository={repository}/>
                     ))}
-            </Repositories> : <div>Вернисть назад</div>}
+            </Repositories> }
         </Container>
     );
 })
