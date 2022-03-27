@@ -3,7 +3,7 @@ import AppStore from "./app";
 import {IUser} from "../interfaces";
 
 export default class UserStore {
-    user: IUser | null = null
+    user: IUser | undefined = undefined
 
     constructor(private store: AppStore) {
         makeObservable(this);

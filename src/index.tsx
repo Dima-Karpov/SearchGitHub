@@ -26,7 +26,6 @@ const theme = {
     mdBreakPoint: '768px',
 };
 
-
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter basename="/SearchGitHub">

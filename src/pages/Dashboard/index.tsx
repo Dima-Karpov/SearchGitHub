@@ -20,6 +20,7 @@ import {NotFounded} from "../../components/NotFounded";
 export const Dashboard: React.FC = observer(() => {
     const history = useHistory();
     const {api} = useAppContext();
+
     const [loading, setLoading] = useState<boolean>(false);
     const [username, setUsername] = useState<string>('');
     const [error, setError] = useState<string>('')
@@ -29,29 +30,28 @@ export const Dashboard: React.FC = observer(() => {
             setLoading(true);
             await api.user.getUser(username)
             await api.repository.getRepositories(username)
+            await api.starred.getStarred(username)
             history.push(`/users/${username}`);
         } catch (e: any) {
-            setError(e.message)
+            setError(e)
         } finally {
             setLoading(false);
         }
     }
 
-    const handleSearchTest = async (event: ChangeEvent<HTMLInputElement>) => {
-
-        event.preventDefault();
-
+    const handleSearchTest = async (event: any) => {
+        event.preventDefault()
         if (username.trim() === '') {
             return;
         }
         await load()
-
     };
 
     function handleUsernameChange(e: ChangeEvent<HTMLInputElement>) {
         const {value} = e.target;
         setUsername(value);
     }
+
 
     if (loading) {
         return <Spinner style={{alignSelf: 'center'}}/>;
@@ -77,11 +77,7 @@ export const Dashboard: React.FC = observer(() => {
             </Slide>
             <Slide direction="up" duration={500}>
                 <Fade>
-
-                    <FormContainer
-                        // @ts-ignore
-                        onSubmit={handleSearchTest}
-                    >
+                    <FormContainer onSubmit={handleSearchTest}>
                         <Input
                             type="text"
                             placeholder="Enter the user name"

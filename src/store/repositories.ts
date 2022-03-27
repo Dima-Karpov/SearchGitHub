@@ -3,7 +3,7 @@ import AppStore from "./app";
 import {action, makeObservable} from "mobx";
 
 export default class RepositoriesStore {
-    repositories: any
+    repositories: IRepository[] | undefined
 
     constructor(private store: AppStore) {
         makeObservable(this);

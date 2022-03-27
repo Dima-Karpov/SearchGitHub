@@ -5,27 +5,29 @@ import {Header} from '../../components/Header';
 import {UserInfo} from '../../components/UserInfo';
 import {useAppContext} from "../../app-context";
 
-import {filterRepositories, sortRepositories} from './utility';
+import {filterRepositories, getStarsCountFromResponse, sortRepositories} from './utility';
 import {Repository} from "../../components/Repository";
 
 import {IRepository} from "../../interfaces";
+import {observer} from "mobx-react-lite";
 
 
-export const User: React.FC = () => {
+export const User: React.FC = observer(() => {
     const {store} = useAppContext();
+    const count = getStarsCountFromResponse(store.starred.headers)
 
     return (
         <Container>
             <Header/>
-            <UserInfo user={store.user.user} startsCount={''}/>
-            <Repositories>
+            {store.user.user && <UserInfo user={store.user.user} startsCount={count}/>}
+            {store.repositories.repositories ? <Repositories>
                 {store.repositories.repositories
                     .filter(filterRepositories)
                     .sort(sortRepositories)
                     .map((repository: IRepository) => (
                         <Repository key={repository.name} repository={repository}/>
                     ))}
-            </Repositories>
+            </Repositories> : <div>Вернисть назад</div>}
         </Container>
     );
-}
+})

@@ -1,13 +1,5 @@
-import { AxiosResponse } from 'axios';
-import { IRepository, IUser } from '../../interfaces';
+import {IRepository} from '../../interfaces';
 
-export function getUserFromResponse(response: AxiosResponse<IUser>): IUser {
-  return response.data;
-}
-
-export function getRepositoriesFromResponse(response: AxiosResponse<IRepository[]>,): IRepository[] {
-  return response.data;
-}
 
 function parseLinkHeader(header: string) {
   if (!header || !header.length) {
@@ -29,9 +21,9 @@ function parseLinkHeader(header: string) {
   return links;
 }
 
-export function getStarsCountFromResponse(response: AxiosResponse): string {
-  const parsedLinks = parseLinkHeader(response?.headers.link);
-
+export function getStarsCountFromResponse(headers: any): string {
+  const parsedLinks = parseLinkHeader(headers && headers.link);
+debugger
   let totalStars = '0';
 
   if (parsedLinks) {
@@ -55,3 +47,5 @@ export function sortRepositories(a: IRepository, b: IRepository): number {
 export function filterRepositories(repository: IRepository): boolean {
   return Boolean(repository.language);
 }
+
+
