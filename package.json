@@ -2,6 +2,7 @@
   "name": "search-github",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Dima-Karpov.github.io/SearchGitHub",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -13,6 +14,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.24",
     "axios": "^0.26.1",
+    "gh-pages": "^3.2.3",
     "mobx": "^6.5.0",
     "mobx-react-lite": "^3.3.0",
     "mobx-state-tree": "^5.1.3",
@@ -31,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploi": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
