@@ -23,7 +23,6 @@ function parseLinkHeader(header: string) {
 
 export function getStarsCountFromResponse(headers: any): string {
   const parsedLinks = parseLinkHeader(headers && headers.link);
-debugger
   let totalStars = '0';
 
   if (parsedLinks) {
