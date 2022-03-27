@@ -7,6 +7,7 @@ https://dima-karpov.github.io/SearchGitHub/
 * React
 * MobX
 * Typescript
+* Axios
 * React Router
 * React Awesome Reveal
 * Styled Components
