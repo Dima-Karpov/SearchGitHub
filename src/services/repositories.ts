@@ -1,8 +1,8 @@
-import AppApi from "./app";
-import AppStore from "../store/app";
+import {AppApi} from "./app";
+import {AppStore} from "../store/app";
 
 
-export default class RepositoriesAPI {
+export class RepositoriesAPI {
 
     constructor(private api: AppApi, private store: AppStore) {}
 
@@ -12,6 +12,6 @@ export default class RepositoriesAPI {
                 per_page: 30,
             },
         })
-        this.store.repositories.load(res.data)
+        this.store.repositories.load(res.data);
     }
 }

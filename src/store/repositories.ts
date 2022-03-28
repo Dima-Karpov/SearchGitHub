@@ -1,8 +1,11 @@
-import {IRepository} from "../interfaces";
-import AppStore from "./app";
 import {action, makeObservable} from "mobx";
 
-export default class RepositoriesStore {
+import {IRepository} from "../interfaces";
+import {AppStore} from "./app";
+
+import {filterRepositories, sortRepositories} from "../pages/User/utility";
+
+export class RepositoriesStore {
     repositories: IRepository[] | undefined
 
     constructor(private store: AppStore) {
@@ -10,6 +13,6 @@ export default class RepositoriesStore {
     }
 
     @action load(repositories: IRepository[]) {
-        this.repositories = repositories
+        this.repositories = repositories.filter(filterRepositories).sort(sortRepositories)
     }
 }

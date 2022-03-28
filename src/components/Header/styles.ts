@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.header`
   & > div {
@@ -20,7 +20,8 @@ export const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.05);
   }

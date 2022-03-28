@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container, Image, Title } from './styles';
+import React from "react";
+import { Container, Image, Title } from "./styles";
 
-import { Fade, Slide } from 'react-awesome-reveal';
-import notFounded from '../../assets/no-found.png';
+import { Fade, Slide } from "react-awesome-reveal";
+import notFounded from "../../assets/no-found.png";
 
 
 export const NotFounded: React.FC = () => {

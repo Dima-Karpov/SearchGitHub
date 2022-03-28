@@ -1,11 +1,12 @@
-import AppStore from "./app";
 import {action, makeObservable} from "mobx";
 import {AxiosResponse} from "axios";
-import {IStarred} from "../interfaces";
 
-export default class StarredStore {
-    headers: any
-    data: IStarred | undefined
+import {AppStore} from "./app";
+import {IHeaders, IStarredRepository} from "../interfaces";
+
+export class StarredStore {
+    headers: IHeaders | any
+    data: IStarredRepository | undefined
 
     constructor(private store: AppStore) {
         makeObservable(this);

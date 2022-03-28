@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.li`
   width: 282px;
@@ -13,9 +13,11 @@ export const Container = styled.li`
     padding: 20px 15px 15px 15px;
     box-sizing: border-box;
   }
+
   & > div {
     height: 100%;
   }
+
   & > div > div {
     height: 100%;
   }
@@ -46,10 +48,12 @@ export const Info = styled.div`
     align-items: center;
     color: ${(props) => props.theme.secondary};
     margin-right: 15px;
+
     &:last-child {
       margin-right: 0;
     }
   }
+
   & img {
     margin-right: 5px;
   }

@@ -1,8 +1,8 @@
-import AppApi from "./app";
-import AppStore from "../store/app";
+import {AppApi} from "./app";
+import {AppStore} from "../store/app";
 
 
-export default class StarredAPI {
+export class StarredAPI {
 
     constructor(private api: AppApi, private store: AppStore) {}
 
@@ -13,6 +13,6 @@ export default class StarredAPI {
                 page: 2,
             },
         })
-        this.store.starred.load(res)
+        this.store.starred.load(res);
     }
 }

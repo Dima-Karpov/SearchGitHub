@@ -1,16 +1,18 @@
 import axios from "axios";
-import AppStore from "../store/app";
+import {AppStore} from "../store/app";
 
-import UserApi from "./user";
-import RepositoriesAPI from "./repositories";
-import StarredAPI from "./starred";
+import {UserApi} from "./user";
+import {RepositoriesAPI} from "./repositories";
+import {StarredAPI} from "./starred";
+
+import { baseULR } from "../endpoints";
 
 
-export default class AppApi {
+export class AppApi {
     client = axios.create({
-        baseURL: 'https://api.github.com',
+        baseURL: baseULR,
         headers: {
-            Accept: 'application/vnd.github.v3+json',
+            Accept: "application/vnd.github.v3+json",
         },
     });
 
@@ -22,7 +24,7 @@ export default class AppApi {
     constructor(store: AppStore) {
         this.user = new UserApi(this, store);
         this.repository = new RepositoriesAPI(this, store);
-        this.starred = new StarredAPI(this, store)
+        this.starred = new StarredAPI(this, store);
     }
 }
 

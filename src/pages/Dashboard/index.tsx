@@ -1,16 +1,16 @@
-import React, {ChangeEvent, useState} from 'react';
-import {Container, FormContainer, LogoContainer} from './styles';
-import {Fade, Slide} from 'react-awesome-reveal';
+import React, {ChangeEvent, useState} from "react";
+import {Container, FormContainer, LogoContainer} from "./styles";
+import {Fade, Slide} from "react-awesome-reveal";
 
-import {Button} from '../../components/Button';
-import {Input} from '../../components/Input';
+import {Button} from "../../components/Button";
+import {Input} from "../../components/Input";
 
-import logo from '../../assets/logod.svg';
+import logo from "../../assets/logod.svg";
 
 import {observer} from "mobx-react-lite";
 import {Spinner} from "../../components/Spinner";
 
-import {useAppContext} from '../../app-context';
+import {useAppContext} from "../../app-context";
 import {useHistory} from "react-router";
 
 import {Header} from "../../components/Header";
@@ -22,42 +22,47 @@ export const Dashboard: React.FC = observer(() => {
     const {api} = useAppContext();
 
     const [loading, setLoading] = useState<boolean>(false);
-    const [username, setUsername] = useState<string>('');
-    const [error, setError] = useState<string>('')
+    const [username, setUsername] = useState<string | null>(null);
+    const [error, setError] = useState<Error | null>(null);
 
-    const load = async () => {
+    const loadUserRepositories = async () => {
         try {
             setLoading(true);
-            await api.user.getUser(username)
-            await api.repository.getRepositories(username)
-            await api.starred.getStarred(username)
-            history.push(`/users/${username}`);
-        } catch (e: any) {
-            setError(e)
+
+            if (username) {
+                await api.user.getUser(username);
+                await api.repository.getRepositories(username);
+                await api.starred.getStarred(username);
+                history.push(`/users/${username}`);
+            }
+
+        } catch (e) {
+            const error = e as Error
+            setError(error);
         } finally {
             setLoading(false);
         }
-    }
+    };
 
     const handleSearchTest = async (event: any) => {
         event.preventDefault()
-        if (username.trim() === '') {
+        if (username && !username.trim()) {
             return;
         }
-        await load()
+        await loadUserRepositories();
     };
 
-    function handleUsernameChange(e: ChangeEvent<HTMLInputElement>) {
+    const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target;
         setUsername(value);
-    }
+    };
 
 
     if (loading) {
-        return <Spinner style={{alignSelf: 'center'}}/>;
+        return <Spinner />;
     }
 
-    if (error !== '') {
+    if (error) {
         return (
             <Container>
                 <Header setError={setError}/>
@@ -81,7 +86,7 @@ export const Dashboard: React.FC = observer(() => {
                         <Input
                             type="text"
                             placeholder="Enter the user name"
-                            value={username}
+                            value={username ? username : ''}
                             onChange={handleUsernameChange}
                         />
                         <Button>Search</Button>

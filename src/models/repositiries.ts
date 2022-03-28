@@ -1,10 +1,11 @@
-import {IRepository} from "../interfaces";
-import AppStore from "../store/app";
-
 import {makeObservable} from "mobx";
 
+import {IRepository} from "../interfaces";
+import {AppStore} from "../store/app";
 
-export default class Repositories implements IRepository {
+
+
+export class Repositories implements IRepository {
     name: string;
     description: string;
     stars: number;

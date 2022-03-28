@@ -1,8 +1,9 @@
 import {makeObservable} from "mobx";
-import {IUser} from "../interfaces";
-import AppStore from "../store/app";
 
-export default class User implements IUser {
+import {IUser} from "../interfaces";
+import {AppStore} from "../store/app";
+
+export class User implements IUser {
     name: string;
     avatar_url: string;
     twitter_username: string;

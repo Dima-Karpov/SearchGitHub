@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const load = keyframes`
   0% {
@@ -23,6 +23,7 @@ export const Spinner = styled.div`
   border-radius: 50%;
   width: 10em;
   height: 10em;
+  align-self: center;
   &:after {
     border-radius: 50%;
     width: 10em;

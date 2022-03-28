@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import {ThemeProvider} from 'styled-components';
-import './index.css';
-import {App} from './App';
-import reportWebVitals from './reportWebVitals';
-import AppStore from "./store/app";
-import AppApi from "./services/app";
-import AppContext from "./app-context";
+import React from "react";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+import {ThemeProvider} from "styled-components";
+import "./index.css";
+import {App} from "./App";
+import reportWebVitals from "./reportWebVitals";
+import {AppStore} from "./store/app";
+import {AppApi} from "./services/app";
+import {AppContext} from "./app-context";
 
-const store = new AppStore()
-const api = new AppApi(store)
+const store = new AppStore();
+const api = new AppApi(store);
 
 const theme = {
     background: '#232324',
@@ -27,16 +27,14 @@ const theme = {
 };
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter basename="/SearchGitHub">
-            <AppContext.Provider value={{store, api}}>
-                <ThemeProvider theme={theme}>
-                    <App/>
-                </ThemeProvider>
-            </AppContext.Provider>
-        </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root'),
-);
+    <BrowserRouter basename="/SearchGitHub">
+        <AppContext.Provider value={{store, api}}>
+            <ThemeProvider theme={theme}>
+                <App/>
+            </ThemeProvider>
+        </AppContext.Provider>
+    </BrowserRouter>,
+document.getElementById('root'),
+)
 
 reportWebVitals();

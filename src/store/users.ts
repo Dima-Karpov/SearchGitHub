@@ -1,8 +1,8 @@
 import {action, makeObservable} from "mobx";
-import AppStore from "./app";
+import {AppStore} from "./app";
 import {IUser} from "../interfaces";
 
-export default class UserStore {
+export class UserStore {
     user: IUser | undefined = undefined
 
     constructor(private store: AppStore) {

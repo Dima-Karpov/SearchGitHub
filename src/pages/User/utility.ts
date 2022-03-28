@@ -1,4 +1,4 @@
-import {IRepository} from '../../interfaces';
+import {IHeaders, IRepository} from "../../interfaces";
 
 
 function parseLinkHeader(header: string) {
@@ -21,7 +21,7 @@ function parseLinkHeader(header: string) {
   return links;
 }
 
-export function getStarsCountFromResponse(headers: any): string {
+export function getStarsCountFromResponse(headers: IHeaders): string {
   const parsedLinks = parseLinkHeader(headers && headers.link);
   let totalStars = '0';
 
